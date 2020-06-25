@@ -1,0 +1,48 @@
+<h1> Tenant Name </h1>
+<h3> <%= @tenant.name %></h3>
+<p> Change Tenant name </p>
+<form method = "POST" action = '/tenant/<%= @tenant.id %>'>
+<input type="hidden" value="patch" name="_method">
+<label>New Name: <input type = "text" name = "name" value = "<%= @tenant.name %>"> </label>
+<br><br>
+<input type = "submit" name = "submit">
+</form>
+
+<h1> Apartment Address </h1>
+<% @apt_boys.each do |a| %> 
+    <h3> <a href="/apartment/<%= a.id %>">
+     <%= a.address %> </a>  </h3>
+    <% end %>
+    <p> Change Apartment  </p>
+    <form method = "POST" action = '/tenant/<%= @tenant.id %>'>
+    <input type="hidden" value="patch" name="_method">
+<label for="apartments">Choose an Apartment:</label>
+
+
+<select name="apartments[address]" id="apartments_id" <% @apartments.each do |l| %>
+    value = "<%=l.address%>"
+    <%end%>>
+<% @apartments.each do |l| %>
+    <option type = "text" name = "address" value= "<%=l.address%>" > <%= l.address %> </option>
+    <% end %>
+  
+</select>
+<br><br>
+<input type = "submit" name = "submit">
+</form>
+
+
+
+<br><br>
+<a href="/apartments">
+<h3> Apartments </h3>
+ </a>
+<a href="/tenants">
+<h3> Tenants </h3>
+</a>
+<br> <br>
+<h3>Delete Tenant</h3>
+<form method = "POST" action = "/remove/<%= @tenant.id %>">
+<input type = "hidden" name = "_method" value = "delete">
+<input type = "submit" value = "Delete">
+</form>
