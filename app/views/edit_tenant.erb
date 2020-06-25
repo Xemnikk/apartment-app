@@ -5,8 +5,8 @@
 <input type="hidden" value="patch" name="_method">
 <label>New Name: <input type = "text" name = "name" value = "<%= @tenant.name %>"> </label>
 <br><br>
-<input type = "submit" name = "submit">
-</form>
+
+
 
 <h1> Apartment Address </h1>
 <% @apt_boys.each do |a| %> 
@@ -14,8 +14,7 @@
      <%= a.address %> </a>  </h3>
     <% end %>
     <p> Change Apartment  </p>
-    <form method = "POST" action = '/tenant/<%= @tenant.id %>'>
-    <input type="hidden" value="patch" name="_method">
+    
 <label for="apartments">Choose an Apartment:</label>
 
 
@@ -23,7 +22,7 @@
     value = "<%=l.address%>"
     <%end%>>
 <% @apartments.each do |l| %>
-    <option type = "text" name = "address" value= "<%=l.address%>" > <%= l.address %> </option>
+    <option type = "text" name = "address" value= "<%=l.id%>" > <%= l.address %> </option>
     <% end %>
   
 </select>

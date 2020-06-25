@@ -29,17 +29,18 @@ class ApplicationController < Sinatra::Base
   patch('/tenant/:id') do
     tenant = Tenant.find(params[:id])
     tenant.name = params[:name]
+    tenant.apartment_id = params[:apartments][:address]
     tenant.save
     redirect("/tenant/#{tenant.id}")
   end
 
-  patch('/tenant/:id') do 
-    tenant = Tenant.find(params[:id])
-    apartment = Apartment.find(params[:id])
-    apartment.address = params[:address]
-    apartment.save
-    redirect("/tenant/#{tenant.id}")
-  end
+  # patch('/tenant/:id') do 
+  #   tenant = Tenant.find(params[:id])
+  #   apartment = Apartment.find(params[:id])
+  #   apartment.address = params[:address]
+  #   apartment.save
+  #   redirect("/tenant/#{tenant.id}")
+  # end
 
   delete('/remove/:id') do
     tenant = Tenant.find(params[:id])
